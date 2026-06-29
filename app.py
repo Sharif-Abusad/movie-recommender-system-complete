@@ -2804,13 +2804,31 @@ import streamlit as st
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Optional, List, Dict, Any
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ─────────────────────────────────────────────
 # CONFIG
 # ─────────────────────────────────────────────
-API_BASE = "http://localhost:8000"
-# Generous timeout — bundle endpoint makes ~12 sequential TMDB calls
-TIMEOUT  = 60
+# API_BASE = "https://movie-recommender-system-3n2v.onrender.com" or "http://localhost:8000"
+# # Generous timeout — bundle endpoint makes ~12 sequential TMDB calls
+# TIMEOUT  = 60
+
+import os
+from dotenv import load_dotenv
+import streamlit as st
+
+load_dotenv()
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+API_BASE = os.getenv("API_BASE")
+TIMEOUT = int(os.getenv("TIMEOUT", 60))
 
 st.set_page_config(
     page_title="CineMatch",
